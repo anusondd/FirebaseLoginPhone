@@ -1,0 +1,93 @@
+{
+    "cordova-plugin-buildinfo": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-buildinfo@2.0.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-universal-links-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-universal-links-plugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-browsertab": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-browsertab"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser@1.7.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat@^1.0.0"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@1.1.4"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen@~4.0.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@2.2.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1.3.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "ionic-plugin-keyboard": {
+        "source": {
+            "type": "registry",
+            "id": "ionic-plugin-keyboard@~2.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-facebook4": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-facebook4@^1.9.1"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1628130570559963",
+            "APP_NAME": "Firebase_ath"
+        }
+    }
+}
