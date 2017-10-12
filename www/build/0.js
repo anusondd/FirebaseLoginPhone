@@ -1,13 +1,13 @@
 webpackJsonp([0],{
 
-/***/ 415:
+/***/ 414:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(416);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -44,8 +44,8 @@ LoginPageModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -64,20 +64,25 @@ var LoginPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.alertCtrl = alertCtrl;
+        this.PhoneNumber = {};
         //this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     }
     LoginPage.prototype.ngOnInit = function () {
         this.recaptchaVerifier = new __WEBPACK_IMPORTED_MODULE_2_firebase___default.a.auth.RecaptchaVerifier('recaptcha-container');
     };
     LoginPage.prototype.ionViewDidLoad = function () {
-        this.phoneNumber = '66940282690';
+        this.PhoneNumber.countryCode = '+66';
+        this.PhoneNumber.phoneNumber = '940282690';
         console.log('ionViewDidLoad LoginPage');
     };
-    LoginPage.prototype.signIn = function (phoneNumber) {
+    LoginPage.prototype.signIn = function (PhoneNumber) {
         var _this = this;
         //this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        this.countryCode = this.PhoneNumber.countryCode;
+        this.phoneNumber = this.PhoneNumber.phoneNumber;
         var appVerifier = this.recaptchaVerifier;
-        var phoneNumberString = "+" + phoneNumber;
+        var phoneNumberString = this.countryCode + this.phoneNumber;
+        console.log(phoneNumberString);
         __WEBPACK_IMPORTED_MODULE_2_firebase___default.a.auth().signInWithPhoneNumber(phoneNumberString, appVerifier)
             .then(function (confirmationResult) {
             var prompt = _this.alertCtrl.create({
@@ -93,6 +98,7 @@ var LoginPage = (function () {
                                 .then(function (result) {
                                 // User signed in successfully.
                                 console.log(result.user);
+                                this.navCtrl.push('HomePage');
                                 // ...
                             }).catch(function (error) {
                                 // User couldn't sign in (bad verification code?)
@@ -108,14 +114,11 @@ var LoginPage = (function () {
             console.error("SMS not sent", error);
         });
     };
-    LoginPage.prototype.signOut = function () {
-        __WEBPACK_IMPORTED_MODULE_2_firebase___default.a.auth().signOut;
-    };
     return LoginPage;
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"D:\Ionic\FirebaseFacebook\src\pages\login\login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div id="recaptcha-container"></div>\n  <!-- <div class="g-recaptcha" id="recaptcha-container" data-sitekey="6LdmijMUAAAAAD8krV6DTJm6m01CYPVlfncHEv99"></div>\n     -->\n    <ion-item>\n        <ion-label stacked>Phone Number</ion-label>\n        <ion-input type="number" [(ngModel)]="phoneNumber"></ion-input>\n    </ion-item>\n   \n    \n      <button ion-button id="sign-in-button" (click)="signIn(phoneNumber)">\n        Sign In\n      </button>\n      <button ion-button id="sign-in-button" (click)="signOut()">\n        Sign Out\n      </button>\n    \n    \n\n</ion-content>\n'/*ion-inline-end:"D:\Ionic\FirebaseFacebook\src\pages\login\login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"D:\Ionic\FirebaseLoginPhone\src\pages\login\login.html"*/'<!--\n\n  Generated template for the LoginPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Login</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div id="recaptcha-container"></div>\n\n  \n\n    <ion-item>\n\n      <ion-label stacked>Country Code</ion-label>\n\n      <ion-input type="text" [(ngModel)]="PhoneNumber.countryCode"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-label stacked>Phone Number</ion-label>\n\n        <ion-input type="number" [(ngModel)]="PhoneNumber.phoneNumber"></ion-input>\n\n    </ion-item>\n\n   \n\n    \n\n      <button ion-button id="sign-in-button" (click)="signIn(PhoneNumber)">\n\n        Sign In\n\n      </button>\n\n      \n\n    \n\n    \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Ionic\FirebaseLoginPhone\src\pages\login\login.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], LoginPage);

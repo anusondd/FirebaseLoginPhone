@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 
 import firebase from 'firebase';
+import { PhoneNumber } from '../../model/phoneNumber';
 
 @IonicPage()
 @Component({
@@ -10,6 +11,8 @@ import firebase from 'firebase';
 })
 export class LoginPage implements OnInit{
 
+  PhoneNumber = {} as PhoneNumber;
+  countryCode:string;
   phoneNumber:string;
 
   recaptchaVerifier:firebase.auth.RecaptchaVerifier;
@@ -24,17 +27,21 @@ export class LoginPage implements OnInit{
   }
 
   ionViewDidLoad() {
-    this.phoneNumber = '66940282690';
+    this.PhoneNumber.countryCode = '+66';
+    this.PhoneNumber.phoneNumber = '940282690';
     console.log('ionViewDidLoad LoginPage');
     
     
     
   }
 
-  signIn(phoneNumber: number){
+  signIn(PhoneNumber: PhoneNumber){
     //this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    this.countryCode = this.PhoneNumber.countryCode;
+    this.phoneNumber =  this.PhoneNumber.phoneNumber;
     const appVerifier = this.recaptchaVerifier;
-    const phoneNumberString = "+" + phoneNumber;
+    const phoneNumberString =  this.countryCode + this.phoneNumber;
+    console.log(phoneNumberString);
   
     firebase.auth().signInWithPhoneNumber(phoneNumberString, appVerifier)
       .then( confirmationResult => {
@@ -51,16 +58,21 @@ export class LoginPage implements OnInit{
                 .then(function (result) {
                   // User signed in successfully.
                   console.log(result.user);
+                  
+                  this.navCtrl.push('HomePage');
+                  
                   // ...
                 }).catch(function (error) {
                   // User couldn't sign in (bad verification code?)
                   // ...
                 });
+                
               }
             }
           ]
         });
         prompt.present();
+        
     })
     .catch(function (error) {
       console.error("SMS not sent", error);
@@ -68,8 +80,6 @@ export class LoginPage implements OnInit{
   
   }
 
-  signOut(){
-    firebase.auth().signOut
-  }
+  
 
 }

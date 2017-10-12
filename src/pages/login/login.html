@@ -15,20 +15,21 @@
 
 <ion-content padding>
   <div id="recaptcha-container"></div>
-  <!-- <div class="g-recaptcha" id="recaptcha-container" data-sitekey="6LdmijMUAAAAAD8krV6DTJm6m01CYPVlfncHEv99"></div>
-     -->
+  
+    <ion-item>
+      <ion-label stacked>Country Code</ion-label>
+      <ion-input type="text" [(ngModel)]="PhoneNumber.countryCode"></ion-input>
+    </ion-item>
     <ion-item>
         <ion-label stacked>Phone Number</ion-label>
-        <ion-input type="number" [(ngModel)]="phoneNumber"></ion-input>
+        <ion-input type="number" [(ngModel)]="PhoneNumber.phoneNumber"></ion-input>
     </ion-item>
    
     
-      <button ion-button id="sign-in-button" (click)="signIn(phoneNumber)">
+      <button ion-button id="sign-in-button" (click)="signIn(PhoneNumber)">
         Sign In
       </button>
-      <button ion-button id="sign-in-button" (click)="signOut()">
-        Sign Out
-      </button>
+      
     
     
 
